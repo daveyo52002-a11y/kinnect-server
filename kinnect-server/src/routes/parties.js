@@ -4,7 +4,7 @@ const { authenticate } = require('../middleware/auth');
 
 router.use(authenticate);
 
-// ── GET /api/parties ─────────────────────────────────────────────
+//GET /api/parties
 router.get('/', async (req, res) => {
   try {
     const { rows } = await pool.query(
@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// ── POST /api/parties ────────────────────────────────────────────
+// POST /api/parties
 // Body: { movie_id }
 router.post('/', async (req, res) => {
   const { movie_id } = req.body;
@@ -60,7 +60,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// ── POST /api/parties/:id/join ───────────────────────────────────
+// POST /api/parties/:id/join 
 router.post('/:id/join', async (req, res) => {
   try {
     await pool.query(
@@ -76,7 +76,7 @@ router.post('/:id/join', async (req, res) => {
   }
 });
 
-// ── PATCH /api/parties/:id/status ── host only ───────────────────
+// PATCH /api/parties/:id/status(host only)
 // Body: { status: 'playing' | 'ended' }
 router.patch('/:id/status', async (req, res) => {
   const { status } = req.body;
